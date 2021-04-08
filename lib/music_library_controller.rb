@@ -47,10 +47,9 @@ class MusicLibraryController
     input = gets.chomp.to_i
     songs = Song.all
     if input.to_i > 0 && input.to_i <= Song.all.length
-      sorted_songs = Song.all.sort { |a, b| a.name <=> b.name[input - 1] }
-    puts "Playing #{song.name} by #{song.artist.name}" if sorted_songs
+      song = Song.all.sort { |a, b| a.name <=> b.name }[input - 1]
     end 
-  
+    puts "Playing #{song.name} by #{song.artist.name}" if song
   end
   
   def call
