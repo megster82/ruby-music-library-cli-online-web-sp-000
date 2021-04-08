@@ -45,9 +45,10 @@ class MusicLibraryController
   def play_song
     puts "Which song number would you like to play?"
     input = gets.chomp.to_i
+    songs = Song.all
     if input.to_i > 0 && input.to_i <= Song.all.length
-      sorted_songs = Song.all.sort { |a, b| a.name <=> b.name }
-      sorted_songs.each_with_index { |song, index| puts "Playing #{song.name} by #{song.artist.name}" }
+      sorted_songs = Song.all.sort { |a, b| a.name <=> b.name[input - 1] }
+    puts "Playing #{song.name} by #{song.artist.name}" } if sorted_songs
     end 
   
   end
